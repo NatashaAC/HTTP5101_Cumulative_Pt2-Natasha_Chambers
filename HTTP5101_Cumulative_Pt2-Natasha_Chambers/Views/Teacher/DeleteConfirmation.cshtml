@@ -1,0 +1,17 @@
+﻿@model HTTP5101_Cumulative_Pt2_Natasha_Chambers.Models.Teacher
+@{
+    ViewBag.Title = "DeleteConfirmation";
+}
+
+<div>
+    <nav>
+        <a style="float: left;" href="/Teacher/Show/@Model.TeacherId">Cancel</a>
+    </nav>
+
+    <h2>Are you sure you want to delete @Model.TeacherFname @Model.TeacherLname</h2>
+    <p>This action can not be undone.</p>
+
+    <form method="POST" action="/Teacher/Delete/@Model.TeacherId">
+        <button style="margin: 0 auto; background-color: #b80909; border: 2px solid #6a6868; border-radius: 5px;">Confirm Delete</button>
+    </form>
+</div>
