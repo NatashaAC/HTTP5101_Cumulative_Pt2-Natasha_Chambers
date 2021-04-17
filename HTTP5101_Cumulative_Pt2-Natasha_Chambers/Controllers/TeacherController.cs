@@ -71,19 +71,28 @@ namespace HTTP5101_Cumulative_Pt2_Natasha_Chambers.Controllers
             Debug.WriteLine(HireDate);
             Debug.WriteLine(Salary);
 
-            // New Teacher Object
-            Teacher NewTeacher = new Teacher();
-            NewTeacher.TeacherFname = TeacherFname;
-            NewTeacher.TeacherLname = TeacherLname;
-            NewTeacher.EmployeeNumber = EmployeeNumber;
-            NewTeacher.HireDate = HireDate;
-            NewTeacher.Salary = Salary;
+            // Validating 
+            if(TeacherFname == "" || TeacherLname == "" || EmployeeNumber == "")
+            {
+                return RedirectToAction("New");
+            } 
+            else
+            {
+                // New Teacher Object
+                Teacher NewTeacher = new Teacher();
+                NewTeacher.TeacherFname = TeacherFname;
+                NewTeacher.TeacherLname = TeacherLname;
+                NewTeacher.EmployeeNumber = EmployeeNumber;
+                NewTeacher.HireDate = HireDate;
+                NewTeacher.Salary = Salary;
 
-            // Instantiating 
-            TeacherDataController controller = new TeacherDataController();
-            controller.AddTeacher(NewTeacher);
+                // Instantiating 
+                TeacherDataController controller = new TeacherDataController();
+                controller.AddTeacher(NewTeacher);
 
-            return RedirectToAction("List");
+                return RedirectToAction("List");
+            }
+
         }
     }
 }

@@ -13,6 +13,7 @@
     <div class="teacherInput">
         <label for="teacherfname">First Name:</label>
         <input type="text" id="teacherfname" name="teacherfname" />
+        <p id="fnErrorMssg"></p>
     </div>
     <div class="teacherInput">
         <label for="teacherlname">Last Name:</label>
@@ -44,9 +45,11 @@
 
         var employeeNumPattern = /T\d\d\d/;
 
+        var fnMssg = document.getElementById("fnErrorMssg");
+
         // Validating form fields
         if (firstName == "" || firstName == null) {
-            alert("first name field can not be blank.");
+            fnMssg.innerHTML = "first name field can not be blank.";
             return false;
 
         } else if (lastName == "" || lastName == null) {
