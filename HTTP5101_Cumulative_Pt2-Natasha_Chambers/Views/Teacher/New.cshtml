@@ -3,30 +3,30 @@
     ViewBag.Title = "New";
 }
 
-<h2>New Teacher</h2>
-
 <nav>
     <a class="navLink" href="/Teacher/List">Back to Teacher List</a>
 </nav>
 
-<form method="POST" action="/Teacher/Create">
-    <div>
+<h2>New Teacher</h2>
+
+<form method="POST" action="/Teacher/Create" onsubmit="validateTeacherForm();">
+    <div class="teacherInput">
         <label for="teacherfname">First Name:</label>
         <input type="text" id="teacherfname" name="teacherfname" />
     </div>
-    <div>
+    <div class="teacherInput">
         <label for="teacherlname">Last Name:</label>
         <input type="text" id="teacherlname" name="teacherlname"/>
     </div>
-    <div>
+    <div class="teacherInput">
         <label for="employeenumber">Employee Number:</label>
         <input type="text" id="employeenumber" name="employeenumber"/>
     </div>
-    <div>
+    <div class="teacherInput">
         <label for="hiredate">Hire Date:</label>
         <input type="date" id="hiredate" name="hiredate"/>
     </div>
-    <div>
+    <div class="teacherInput">
         <label for="salary">Salary:</label>
         <input type="text" id="salary" name="salary"/>
     </div>
@@ -36,5 +36,14 @@
 </form>
 
 <script>
-    if () { }
+    function validateTeacherForm() {
+        var firstName = document.getElementById("teacherfname").value;
+
+        if (firstName == "") {
+            alert("first name field can not be blank");
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>

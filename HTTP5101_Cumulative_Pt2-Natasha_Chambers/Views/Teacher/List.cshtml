@@ -3,8 +3,8 @@
     ViewBag.Title = "List";
 }
 
-<div>
-    <h2>List of Teachers</h2>
+<nav>
+    <a class="navLink" href="/Teacher/New">Add Teacher</a>
 
     <form action="/Teacher/List" method="GET">
         <div class="searchBar">
@@ -12,13 +12,15 @@
             <button type="submit" value="search_teacher">Search</button>
         </div>
     </form>
-</div>
+</nav>
 
-<div>
+<div class="listContainer">
+    <h2>List of Teachers</h2>
+
     @foreach (var teacher in Model)
     {
         <div>
-            <a href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFname @teacher.TeacherLname</a>
+            <a class="teacherList" href="/Teacher/Show/@teacher.TeacherId">@teacher.TeacherFname @teacher.TeacherLname</a>
         </div>
 
     }

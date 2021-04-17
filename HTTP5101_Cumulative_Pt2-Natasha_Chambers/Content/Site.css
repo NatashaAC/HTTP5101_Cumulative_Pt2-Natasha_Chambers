@@ -16,20 +16,52 @@ textarea {
     max-width: 280px;
 }
 
+nav {
+    clear: both;
+    overflow: hidden;
+    padding: 15px 0;
+}
+
 .navLink {
     padding-top: 15px;
-    float: left;
+    font-size: 16px;
 }
 
 .deleLink {
     float: right;
     color: darkred;
+    font-size: 16px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 40px;
 }
 
 .searchBar {
     float: right;
 }
 
-div {
-    padding-bottom: 20px;
+.teacherList {
+    font-size: 20px;
 }
+
+.teacherInput {
+    padding-bottom: 15px;
+}
+
+.delConfirmPage {
+    text-align: center;
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.deleteBtn {
+    background-color: #b80909;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
