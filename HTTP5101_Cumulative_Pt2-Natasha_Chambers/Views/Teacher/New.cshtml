@@ -38,11 +38,31 @@
 <script>
     function validateTeacherForm() {
         var firstName = document.getElementById("teacherfname").value;
+        var lastName = document.getElementById("teacherlname").value;
+        var employeeNumber = document.getElementById("employeenumber").value;
+        var salary = document.getElementById("salary").value;
 
-        if (firstName == "") {
-            alert("first name field can not be blank");
+        var employeeNumPattern = /T\d\d\d/;
+
+        // Validating form fields
+        if (firstName == "" || firstName == null) {
+            alert("first name field can not be blank.");
             return false;
-        } else {
+
+        } else if (lastName == "" || lastName == null) {
+            alert("Last name field can not be blank.");
+            return false;
+
+        } else if (employeeNumber == "" || employeeNumber == null || employeeNumPattern.test(employeeNumber)) {
+            alert("Employee number field can not be blank.");
+            return false;
+
+        } else if (salary == "" || salary == null || salary == isNaN) {
+            alert("Salary field can not be blank.");
+            return false;
+
+        }
+        else {
             return true;
         }
     }
