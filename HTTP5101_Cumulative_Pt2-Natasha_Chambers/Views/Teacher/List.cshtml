@@ -3,14 +3,18 @@
     ViewBag.Title = "List";
 }
 
-<h2>List of Teachers</h2>
+<div>
+    <h2>List of Teachers</h2>
+
+    <form action="/Teacher/List" method="GET">
+        <div class="searchBar">
+            <input type="text" name="SearchKey" />
+            <button type="submit" value="search_teacher">Search</button>
+        </div>
+    </form>
+</div>
 
 <div>
-    <form action="/Teacher/List" method="GET">
-        <input type="text" name="SearchKey"/>
-        <button type="submit" value="search_teacher">Search</button>
-    </form>
-
     @foreach (var teacher in Model)
     {
         <div>

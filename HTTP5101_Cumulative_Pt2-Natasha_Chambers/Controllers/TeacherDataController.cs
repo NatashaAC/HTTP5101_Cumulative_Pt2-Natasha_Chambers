@@ -131,13 +131,13 @@ namespace HTTP5101_Cumulative_Pt2_Natasha_Chambers.Controllers
         }
 
         /// <summary>
-        /// 
+        ///     Deletes a Teacher and their information from the teachers table
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">an integer, that corresponds to the teacherid</param>
         [HttpPost]
         public void DeleteTeacher(int id)
         {
-            // Create an instance of a connection
+            // Instance of connection
             MySqlConnection Conn = School.AccessDatabase();
 
             // Open the connection between the web server and database
@@ -156,6 +156,40 @@ namespace HTTP5101_Cumulative_Pt2_Natasha_Chambers.Controllers
             cmd.ExecuteNonQuery();
 
             // Close connection
+            Conn.Close();
+        }
+
+        /// <summary>
+        ///     Adds a Teacher to the teachers table
+        /// </summary>
+        /// <param name="NewTeacher">A teacher object</param>
+        [HttpPost]
+        public void AddTeacher([FromBody]Teacher NewTeacher)
+        {
+            // Instance of connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            // Open connection between web server and database
+            Conn.Open();
+
+            // Create new query for database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL Query
+            cmd.CommandText = "INSERT INTO teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) " +
+                "VALUES (@teacherfname, @teacherlname, @employeenumber, @hiredate, @salary)";
+
+            // Parameters for SQL Query
+            cmd.Parameters.AddWithValue("teacherfname", NewTeacher.TeacherFname);
+            cmd.Parameters.AddWithValue("teacherlname", NewTeacher.TeacherLname);
+            cmd.Parameters.AddWithValue("employeenumber", NewTeacher.EmployeeNumber);
+            cmd.Parameters.AddWithValue("hiredate", NewTeacher.HireDate);
+            cmd.Parameters.AddWithValue("salary", NewTeacher.Salary);
+
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+
+            // Close Connection
             Conn.Close();
         }
     }
