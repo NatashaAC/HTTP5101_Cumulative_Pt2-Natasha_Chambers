@@ -17,11 +17,13 @@
     </div>
     <div class="teacherInput">
         <label for="teacherlname">Last Name:</label>
-        <input type="text" id="teacherlname" name="teacherlname"/>
+        <input type="text" id="teacherlname" name="teacherlname" />
+        <p id="lnErrorMssg"></p>
     </div>
     <div class="teacherInput">
         <label for="employeenumber">Employee Number:</label>
-        <input type="text" id="employeenumber" name="employeenumber"/>
+        <input type="text" id="employeenumber" name="employeenumber" />
+        <p id="emErrorMssg"></p>
     </div>
     <div class="teacherInput">
         <label for="hiredate">Hire Date:</label>
@@ -29,7 +31,8 @@
     </div>
     <div class="teacherInput">
         <label for="salary">Salary:</label>
-        <input type="text" id="salary" name="salary"/>
+        <input type="text" id="salary" name="salary" />
+        <p id="salErrorMssg"></p>
     </div>
     <div>
         <button type="submit">Add Teacher</button>
@@ -46,22 +49,25 @@
         var employeeNumPattern = /T\d\d\d/;
 
         var fnMssg = document.getElementById("fnErrorMssg");
+        var lnMssg = document.getElementById("lnErrorMssg");
+        var emMssg = document.getElementById("emErrorMssg");
+        var salMssg = document.getElementById("salErrorMssg");
 
         // Validating form fields
-        if (firstName == "" || firstName == null) {
+        if (firstName == "" | firstName == null) {
             fnMssg.innerHTML = "first name field can not be blank.";
             return false;
 
-        } else if (lastName == "" || lastName == null) {
-            alert("Last name field can not be blank.");
+        } else if (lastName == "" | lastName == null) {
+            lnMssg.innerHTML = "Last name field can not be blank.";
             return false;
 
-        } else if (employeeNumber == "" || employeeNumber == null || employeeNumPattern.test(employeeNumber)) {
-            alert("Employee number field can not be blank.");
+        } else if (employeeNumber == "" | employeeNumber == null | !employeeNumPattern.test(employeeNumber)) {
+            emMssg.innerHTML = "Employee number field can not be blank.";
             return false;
 
-        } else if (salary == "" || salary == null || salary == isNaN) {
-            alert("Salary field can not be blank.");
+        } else if (salary == "" | salary == null | salary == isNaN) {
+            salMssg.innerHTML = "Salary field can not be blank.";
             return false;
 
         }
